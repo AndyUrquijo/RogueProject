@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: d1679faebcd299b4eb2c1a90d7979735
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: death_belt
+    100002: death_boot_lf
+    100004: death_boot_rt
+    100006: death_buckle
+    100008: death_face_int
+    100010: death_gauntlet_lt
+    100012: death_gauntlet_rt
+    100014: death_helmet
+    100016: death_model01
+    100018: death_plume
+    100020: death_sword
+    100022: death_tunic_full
+    100024: death_visor
+    100026: //RootNode
+    400000: death_belt
+    400002: death_boot_lf
+    400004: death_boot_rt
+    400006: death_buckle
+    400008: death_face_int
+    400010: death_gauntlet_lt
+    400012: death_gauntlet_rt
+    400014: death_helmet
+    400016: death_model01
+    400018: death_plume
+    400020: death_sword
+    400022: death_tunic_full
+    400024: death_visor
+    400026: //RootNode
+    2300000: death_belt
+    2300002: death_boot_lf
+    2300004: death_boot_rt
+    2300006: death_buckle
+    2300008: death_face_int
+    2300010: death_gauntlet_lt
+    2300012: death_gauntlet_rt
+    2300014: death_helmet
+    2300016: death_plume
+    2300018: death_sword
+    2300020: death_tunic_full
+    2300022: death_visor
+    3300000: death_belt
+    3300002: death_boot_lf
+    3300004: death_boot_rt
+    3300006: death_buckle
+    3300008: death_face_int
+    3300010: death_gauntlet_lt
+    3300012: death_gauntlet_rt
+    3300014: death_helmet
+    3300016: death_plume
+    3300018: death_sword
+    3300020: death_tunic_full
+    3300022: death_visor
+    4300000: death_helmet
+    4300002: death_plume
+    4300004: death_visor
+    4300006: death_face_int
+    4300008: death_boot_lf
+    4300010: death_boot_rt
+    4300012: death_gauntlet_lt
+    4300014: death_tunic_full
+    4300016: death_buckle
+    4300018: death_belt
+    4300020: death_sword
+    4300022: death_gauntlet_rt
+    7400000: Knight_Death_02_F
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Knight_Death_02_F
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: death_model01
+        weight: 1
+      - path: death_model01/death_boot_lf
+        weight: 1
+      - path: death_model01/death_boot_rt
+        weight: 1
+      - path: death_model01/death_gauntlet_lt
+        weight: 1
+      - path: death_model01/death_helmet
+        weight: 1
+      - path: death_model01/death_helmet/death_face_int
+        weight: 1
+      - path: death_model01/death_helmet/death_plume
+        weight: 1
+      - path: death_model01/death_helmet/death_visor
+        weight: 1
+      - path: death_model01/death_sword
+        weight: 1
+      - path: death_model01/death_sword/death_gauntlet_rt
+        weight: 1
+      - path: death_model01/death_tunic_full
+        weight: 1
+      - path: death_model01/death_tunic_full/death_belt
+        weight: 1
+      - path: death_model01/death_tunic_full/death_buckle
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

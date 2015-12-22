@@ -1,0 +1,417 @@
+fileFormatVersion: 2
+guid: c5e1883d5b8522748a333ac0e3219ef0
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: be_head01
+    100002: be_pelvis01
+    100004: be_visor01
+    100006: belt
+    100008: bind_chest01
+    100010: bind_head01
+    100012: bind_l_ankle01
+    100014: bind_l_foot01
+    100016: bind_l_forearm01
+    100018: bind_l_index_a01
+    100020: bind_l_index_b01
+    100022: bind_l_index_c01
+    100024: bind_l_mid_a01
+    100026: bind_l_mid_b01
+    100028: bind_l_mid_c01
+    100030: bind_l_pinky_a01
+    100032: bind_l_pinky_b01
+    100034: bind_l_pinky_c01
+    100036: bind_l_shin01
+    100038: bind_l_thumb_a01
+    100040: bind_l_thumb_b01
+    100042: bind_l_wrist01
+    100044: bind_pelvis01
+    100046: bind_r_ankle01
+    100048: bind_r_foot01
+    100050: bind_r_forearm01
+    100052: bind_r_index_a01
+    100054: bind_r_index_b01
+    100056: bind_r_index_c01
+    100058: bind_r_mid_a01
+    100060: bind_r_mid_b01
+    100062: bind_r_mid_c01
+    100064: bind_r_pinky_a01
+    100066: bind_r_pinky_b01
+    100068: bind_r_pinky_c01
+    100070: bind_r_shin01
+    100072: bind_r_thumb_a01
+    100074: bind_r_thumb_b01
+    100076: bind_r_wrist01
+    100078: bind_root01
+    100080: bind_visor01
+    100082: boot_lf
+    100084: boot_rt
+    100086: buckle
+    100088: face_int
+    100090: gauntlet_rt
+    100092: gauntlet_rt1
+    100094: helmet
+    100096: jnt_l_foot01
+    100098: jnt_l_shoulder01
+    100100: jnt_l_thigh01
+    100102: jnt_neck01
+    100104: jnt_r_foot01
+    100106: jnt_r_shoulder01
+    100108: jnt_r_thigh01
+    100110: jntEnd_l_ankle01
+    100112: jntEnd_l_hand01
+    100114: jntEnd_l_index_d01
+    100116: jntEnd_l_mid_d01
+    100118: jntEnd_l_pinky_d01
+    100120: jntEnd_l_thumb_c01
+    100122: jntEnd_l_toe01
+    100124: jntEnd_l_wrist01
+    100126: jntEnd_r_ankle01
+    100128: jntEnd_r_hand01
+    100130: jntEnd_r_index_d01
+    100132: jntEnd_r_mid_d01
+    100134: jntEnd_r_pinky_d01
+    100136: jntEnd_r_thumb_c01
+    100138: jntEnd_r_toe01
+    100140: jntEnd_r_wrist01
+    100142: //RootNode
+    100144: model01
+    100146: plume
+    100148: root01
+    100150: tunic_full
+    100152: visor
+    400000: be_head01
+    400002: be_pelvis01
+    400004: be_visor01
+    400006: belt
+    400008: bind_chest01
+    400010: bind_head01
+    400012: bind_l_ankle01
+    400014: bind_l_foot01
+    400016: bind_l_forearm01
+    400018: bind_l_index_a01
+    400020: bind_l_index_b01
+    400022: bind_l_index_c01
+    400024: bind_l_mid_a01
+    400026: bind_l_mid_b01
+    400028: bind_l_mid_c01
+    400030: bind_l_pinky_a01
+    400032: bind_l_pinky_b01
+    400034: bind_l_pinky_c01
+    400036: bind_l_shin01
+    400038: bind_l_thumb_a01
+    400040: bind_l_thumb_b01
+    400042: bind_l_wrist01
+    400044: bind_pelvis01
+    400046: bind_r_ankle01
+    400048: bind_r_foot01
+    400050: bind_r_forearm01
+    400052: bind_r_index_a01
+    400054: bind_r_index_b01
+    400056: bind_r_index_c01
+    400058: bind_r_mid_a01
+    400060: bind_r_mid_b01
+    400062: bind_r_mid_c01
+    400064: bind_r_pinky_a01
+    400066: bind_r_pinky_b01
+    400068: bind_r_pinky_c01
+    400070: bind_r_shin01
+    400072: bind_r_thumb_a01
+    400074: bind_r_thumb_b01
+    400076: bind_r_wrist01
+    400078: bind_root01
+    400080: bind_visor01
+    400082: boot_lf
+    400084: boot_rt
+    400086: buckle
+    400088: face_int
+    400090: gauntlet_rt
+    400092: gauntlet_rt1
+    400094: helmet
+    400096: jnt_l_foot01
+    400098: jnt_l_shoulder01
+    400100: jnt_l_thigh01
+    400102: jnt_neck01
+    400104: jnt_r_foot01
+    400106: jnt_r_shoulder01
+    400108: jnt_r_thigh01
+    400110: jntEnd_l_ankle01
+    400112: jntEnd_l_hand01
+    400114: jntEnd_l_index_d01
+    400116: jntEnd_l_mid_d01
+    400118: jntEnd_l_pinky_d01
+    400120: jntEnd_l_thumb_c01
+    400122: jntEnd_l_toe01
+    400124: jntEnd_l_wrist01
+    400126: jntEnd_r_ankle01
+    400128: jntEnd_r_hand01
+    400130: jntEnd_r_index_d01
+    400132: jntEnd_r_mid_d01
+    400134: jntEnd_r_pinky_d01
+    400136: jntEnd_r_thumb_c01
+    400138: jntEnd_r_toe01
+    400140: jntEnd_r_wrist01
+    400142: //RootNode
+    400144: model01
+    400146: plume
+    400148: root01
+    400150: tunic_full
+    400152: visor
+    4300000: buckle
+    4300002: belt
+    4300004: visor
+    4300006: face_int
+    4300008: plume
+    4300010: gauntlet_rt
+    4300012: helmet
+    4300014: boot_lf
+    4300016: boot_rt
+    4300018: gauntlet_rt1
+    4300020: tunic_full
+    7400000: Knight_Run_F
+    9500000: //RootNode
+    13700000: belt
+    13700002: boot_lf
+    13700004: boot_rt
+    13700006: buckle
+    13700008: face_int
+    13700010: gauntlet_rt
+    13700012: gauntlet_rt1
+    13700014: helmet
+    13700016: plume
+    13700018: tunic_full
+    13700020: visor
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Knight_Run_F
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 11
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: model01
+        weight: 1
+      - path: model01/belt
+        weight: 1
+      - path: model01/boot_lf
+        weight: 1
+      - path: model01/boot_rt
+        weight: 1
+      - path: model01/buckle
+        weight: 1
+      - path: model01/face_int
+        weight: 1
+      - path: model01/gauntlet_rt
+        weight: 1
+      - path: model01/gauntlet_rt1
+        weight: 1
+      - path: model01/helmet
+        weight: 1
+      - path: model01/plume
+        weight: 1
+      - path: model01/tunic_full
+        weight: 1
+      - path: model01/visor
+        weight: 1
+      - path: root01
+        weight: 1
+      - path: root01/bind_root01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_index_a01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_index_a01/bind_l_index_b01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_index_a01/bind_l_index_b01/bind_l_index_c01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_index_a01/bind_l_index_b01/bind_l_index_c01/jntEnd_l_index_d01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_mid_a01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_mid_a01/bind_l_mid_b01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_mid_a01/bind_l_mid_b01/bind_l_mid_c01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_mid_a01/bind_l_mid_b01/bind_l_mid_c01/jntEnd_l_mid_d01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_pinky_a01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_pinky_a01/bind_l_pinky_b01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_pinky_a01/bind_l_pinky_b01/bind_l_pinky_c01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_pinky_a01/bind_l_pinky_b01/bind_l_pinky_c01/jntEnd_l_pinky_d01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_thumb_a01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_thumb_a01/bind_l_thumb_b01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_l_shoulder01/bind_l_forearm01/jntEnd_l_wrist01/bind_l_wrist01/jntEnd_l_hand01/bind_l_thumb_a01/bind_l_thumb_b01/jntEnd_l_thumb_c01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_neck01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_neck01/bind_head01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_neck01/bind_head01/be_head01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_neck01/bind_head01/bind_visor01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_neck01/bind_head01/bind_visor01/be_visor01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_index_a01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_index_a01/bind_r_index_b01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_index_a01/bind_r_index_b01/bind_r_index_c01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_index_a01/bind_r_index_b01/bind_r_index_c01/jntEnd_r_index_d01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_mid_a01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_mid_a01/bind_r_mid_b01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_mid_a01/bind_r_mid_b01/bind_r_mid_c01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_mid_a01/bind_r_mid_b01/bind_r_mid_c01/jntEnd_r_mid_d01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_pinky_a01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_pinky_a01/bind_r_pinky_b01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_pinky_a01/bind_r_pinky_b01/bind_r_pinky_c01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_pinky_a01/bind_r_pinky_b01/bind_r_pinky_c01/jntEnd_r_pinky_d01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_thumb_a01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_thumb_a01/bind_r_thumb_b01
+        weight: 1
+      - path: root01/bind_root01/bind_chest01/jnt_r_shoulder01/bind_r_forearm01/jntEnd_r_wrist01/bind_r_wrist01/jntEnd_r_hand01/bind_r_thumb_a01/bind_r_thumb_b01/jntEnd_r_thumb_c01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/be_pelvis01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_l_thigh01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_l_thigh01/bind_l_shin01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_l_thigh01/bind_l_shin01/jntEnd_l_ankle01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_l_thigh01/bind_l_shin01/jntEnd_l_ankle01/bind_l_ankle01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_l_thigh01/bind_l_shin01/jntEnd_l_ankle01/bind_l_ankle01/jnt_l_foot01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_l_thigh01/bind_l_shin01/jntEnd_l_ankle01/bind_l_ankle01/jnt_l_foot01/bind_l_foot01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_l_thigh01/bind_l_shin01/jntEnd_l_ankle01/bind_l_ankle01/jnt_l_foot01/jntEnd_l_toe01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_r_thigh01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_r_thigh01/bind_r_shin01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_r_thigh01/bind_r_shin01/jntEnd_r_ankle01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_r_thigh01/bind_r_shin01/jntEnd_r_ankle01/bind_r_ankle01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_r_thigh01/bind_r_shin01/jntEnd_r_ankle01/bind_r_ankle01/jnt_r_foot01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_r_thigh01/bind_r_shin01/jntEnd_r_ankle01/bind_r_ankle01/jnt_r_foot01/bind_r_foot01
+        weight: 1
+      - path: root01/bind_root01/bind_pelvis01/jnt_r_thigh01/bind_r_shin01/jntEnd_r_ankle01/bind_r_ankle01/jnt_r_foot01/jntEnd_r_toe01
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: root01
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 0f4e2e2f1582ae1469de638a90ae0353,
+    type: 3}
+  animationType: 2
+  additionalBone: 0
+  userData: 
