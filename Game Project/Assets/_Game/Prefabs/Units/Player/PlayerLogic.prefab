@@ -75,7 +75,7 @@ MonoBehaviour:
   - Enemy
   attacks:
   - {fileID: 122774, guid: b7329f334d4b01447b11e566fdcb5627, type: 2}
-  - {fileID: 0}
+  - {fileID: 198292, guid: f0cb5ad3119933941ac1ec5064c2c7d1, type: 2}
   - {fileID: 0}
 --- !u!114 &11496862
 MonoBehaviour:
@@ -102,6 +102,10 @@ Prefab:
       propertyPath: attacks.Array.data[0]
       value: 
       objectReference: {fileID: 114196, guid: 6ef6801a2e415ee4087a4b03007e70e7, type: 2}
+    - target: {fileID: 0}
+      propertyPath: attacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 198292, guid: f0cb5ad3119933941ac1ec5064c2c7d1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 112662}

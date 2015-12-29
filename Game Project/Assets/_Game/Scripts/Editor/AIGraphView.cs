@@ -158,10 +158,10 @@ public class AIGraphView
 
     }
 
-    struct TransitionArg
+    struct NodeArg
     {
         public int id;
-        public TransitionArg(int id)
+		public NodeArg(int id)
         {
             this.id = id;
         }
@@ -170,11 +170,26 @@ public class AIGraphView
     //This function is called from the GUI (Right-click menu)
     void StartMakingTransition(object arg)
     {
-        TransitionArg transitionArg = (TransitionArg)arg;
-        selection = AIEditor.graph.behaviours[transitionArg.id].graphic;
+		NodeArg nodeArg = (NodeArg)arg;
+		selection = AIEditor.graph.behaviours[nodeArg.id].graphic;
         makingTransition = true;
     }
 
+
+	//This function is called from the GUI (Right-click menu)
+	void DeleteBehaviour(object arg)
+	{
+		NodeArg nodeArg = (NodeArg)arg;
+		AIBehaviour behaviour = AIEditor.graph.behaviours[nodeArg.id];
+		if( EditorUtility.DisplayDialog("Delete Behaviour", "Do you want to delete " + behaviour.Name, "Yes", "No") )
+		{
+			AIEditor.graph.behaviours.RemoveAt(nodeArg.id);
+			UnityEngine.Object.DestroyImmediate(behaviour,true);
+		}
+        AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(AIEditor.graph));
+		AIEditor.graph.RestoreIndices();
+	}
+	
 
     // Draws a transition line between the specified points. @returns true if the user clicked on the line
     bool DrawTransition(Rect a, Rect b, Color normalColor, Color highlightColor)
@@ -227,7 +242,8 @@ public class AIGraphView
         {
             Debug.Log("Mouse event: " + e.type.ToString());
             GenericMenu contextMenu = new GenericMenu();
-            contextMenu.AddItem(new GUIContent("Make Transition"), false, StartMakingTransition, new TransitionArg(id));
+            contextMenu.AddItem(new GUIContent("Make Transition"), false, StartMakingTransition, new NodeArg(id));
+            contextMenu.AddItem(new GUIContent("Delete Behaviour"), false, DeleteBehaviour, new NodeArg(id));
             contextMenu.ShowAsContext();
             e.Use();
         }

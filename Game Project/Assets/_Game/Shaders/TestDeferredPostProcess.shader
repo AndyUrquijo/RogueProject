@@ -3,13 +3,14 @@
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
+		_RampTexture("Ramp", 2D) = "white" {}
 	}
 
 	SubShader
 	{
 		Cull Off ZWrite Off ZTest Always
 		Tags{ "Queue" = "Transparent+1" }
-		Tags{ "Queue" = "Transparent+1" }
+		//Tags{ "Queue" = "Transparent+1" }
 		Pass
 		{
 			CGPROGRAM
@@ -34,12 +35,13 @@
 
 			sampler2D _MainTex;
 			sampler2D _LightTexture;
+			sampler2D _EmissiveTexture;
+			sampler2D _RampTexture;
 
 			sampler2D _CameraGBufferTexture0;
 			sampler2D _CameraGBufferTexture1;
 			sampler2D _CameraGBufferTexture2;
 			sampler2D _CameraGBufferTexture3;
-			sampler2D _BlurredTexture;
 
 			// --- Vertex Shader ----
 
@@ -53,24 +55,29 @@
 
 			// --- Fragment Shader ----
 
-			half Ramp(half value)
-			{
-				//return value;
-				if (value < 0.33)
-					return 0.3;
-				if (value < 0.66)
-					return 0.5;
-				return 1;
-
-			}
-
 			float4 FragmentFunction(VertexOut outVert) : COLOR
 			{
 				float4 lightColor = tex2D(_LightTexture, outVert.uv);
 				float4 diffuseColor = tex2D(_CameraGBufferTexture0, outVert.uv);
-				float lightRamped = Ramp(lightColor.a);
+				float4 emissiveColor = tex2D(_EmissiveTexture, outVert.uv);
+				float lightRamped = tex2D(_RampTexture, float2(lightColor.aa)).r;
+				float4 normalColor = tex2D(_CameraGBufferTexture2, outVert.uv);
+				//return normalColor;
 				//lightColor.rgb *= lightColor.a;
-				return float4(diffuseColor.rgb*lightColor.rgb*lightRamped, 1);
+				//return float4(emissiveColor.rgb, 1);
+				//return float4(diffuseColor.aaa, 1);
+				//return float4(diffuseColor.rgb, 1);
+				float4 finalColor;
+				finalColor.a = 1;
+				finalColor.rgb = diffuseColor.rgb;
+				finalColor.rgb *= lightColor.rgb;
+				finalColor.rgb *= lightRamped;
+				
+				
+				float alpha = diffuseColor.a;
+				finalColor = finalColor*alpha + emissiveColor*(1-alpha);
+				
+				return finalColor;
 				
 			}
 

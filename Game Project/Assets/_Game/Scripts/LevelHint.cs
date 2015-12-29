@@ -20,7 +20,7 @@ public class LevelHint : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.transform.parent.tag == "Player")
         {
             text.SetActive(true);
             effect.SetActive(false);
@@ -29,7 +29,7 @@ public class LevelHint : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Player")
+		if (other.transform.parent.tag == "Player")
         {
             text.SetActive(false);
             effect.SetActive(true);

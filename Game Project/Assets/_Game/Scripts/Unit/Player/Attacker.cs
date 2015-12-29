@@ -29,22 +29,23 @@ public class Attacker : AbstractBehaviour {
 	public void BeginAttack( GameObject attackObj )
 	{
 		GameObject instance = GameObject.Instantiate(attackObj);
-		instance.transform.position = transform.position;
-        if(model)
+		instance.transform.position += transform.position;
+		instance.transform.rotation = transform.rotation;
+		instance.transform.parent = gameObject.transform;
+        
+		if(model)
+		{
 		    instance.transform.parent = model.transform;
-        else
-            instance.transform.parent = gameObject.transform;
+			instance.transform.rotation = model.rotation;
+		}
 		command.attack = 0;
 		
-		Attack attack = instance.GetComponent<Attack>();
-		if (attack) {
-			attack.targets = targets;
-            attack.owner = gameObject;
-			if (attack.duration == 0) {
-				Animator anim = instance.GetComponent<Animator> ();
-				float length = anim.runtimeAnimatorController.animationClips [0].length;
-				attack.duration = length;
-			}
+		AttackAction attackAction = instance.GetComponent<AttackAction>();
+		if (attackAction) {
+			attackAction.targets = targets;
+			attackAction.owner = gameObject;
+
+			attackAction.StartAttack();
 		}
 	}
 }

@@ -2,19 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Attack : MonoBehaviour {
+public class Attack : AttackAction {
 
 
 	public float duration;
 	public int damage;
 	public float push;
 	public float pushDuration;
-	public List<string> targets;
 
 	private Vector3 pushDirection;
-    public GameObject owner;
+    
+	[HideInInspector]
 
-	void Start () {
+	override public void StartAttack () {
+
+		if (duration == 0) {
+			Animator anim = GetComponent<Animator> ();
+			if( anim != null )
+				duration = anim.runtimeAnimatorController.animationClips [0].length;
+		}
+		
 		GameObject.Destroy (gameObject, duration);
 		if( transform.parent )
 			pushDirection = transform.parent.right;

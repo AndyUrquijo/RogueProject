@@ -9,3 +9,4 @@ public abstract class AICondition : ScriptableObject
 
     abstract public bool CheckCondition();
 }
+

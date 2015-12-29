@@ -28,7 +28,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 452010}
   - 114: {fileID: 11464358}
-  - 114: {fileID: 11463680}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -44,7 +43,7 @@ Transform:
   m_GameObject: {fileID: 112480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.1}
+  m_LocalScale: {x: .5, y: .5, z: .100000001}
   m_Children: []
   m_Father: {fileID: 452010}
   m_RootOrder: 0
@@ -55,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 421648}
@@ -71,7 +70,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e536bbd678cabbe459cb23938957a960, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -79,10 +78,8 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -101,13 +98,12 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112480}
   m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: .5
 --- !u!114 &11446984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,23 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0471b125bf7ce448dd96a01cfdc813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11463680
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac1f94cbf8625d49999094d244200c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0.5
-  damage: 50
-  push: 20
-  pushDuration: 1
-  targets: []
-  owner: {fileID: 0}
 --- !u!114 &11464358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,9 +126,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e581e3f1ace06064381a3dab52473ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  MaxSpeed: 0
-  Gravity: 0
+  targets: []
+  owner: {fileID: 0}
+  duration: 1
+  damage: 50
+  push: 20
+  pushDuration: 1
+  Speed: 12
+  MaxSpeed: 30
+  Gravity: 20
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -163,7 +148,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: duration
-      value: .5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
@@ -189,6 +174,26 @@ Prefab:
       propertyPath: pushDuration
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Speed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaxSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Gravity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e536bbd678cabbe459cb23938957a960, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131222}

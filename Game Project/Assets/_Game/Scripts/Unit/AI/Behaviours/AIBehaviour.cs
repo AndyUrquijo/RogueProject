@@ -39,6 +39,7 @@ public abstract class AIBehaviour : ScriptableObject
             transitions = new List<AITransition>();
             SetGraphicNode(new Vector2(50, 50));
         }
+		hideFlags = HideFlags.HideInHierarchy;
     }
 
     public abstract void Initialize();

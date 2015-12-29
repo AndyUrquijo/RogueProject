@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Spider
-  m_Shader: {fileID: 4800000, guid: e5da4b278184c734b960a317720cf700, type: 3}
+  m_Shader: {fileID: 4800000, guid: b036ca12a62d26b4bafc853f38da8bf3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
@@ -111,11 +111,11 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: 0.5
+        second: .5
       data:
         first:
           name: _Parallax
-        second: 0.02
+        second: .0199999996
       data:
         first:
           name: _ZWrite
@@ -123,7 +123,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.5
+        second: .5
       data:
         first:
           name: _BumpScale
@@ -147,6 +147,14 @@ Material:
       data:
         first:
           name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _NormalScale
+        second: 1
+      data:
+        first:
+          name: _AlphaCutOff
         second: 0
     m_Colors:
       data:

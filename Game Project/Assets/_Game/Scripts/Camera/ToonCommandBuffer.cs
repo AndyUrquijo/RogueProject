@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Rendering;
-using UnityEditor;
 
 /*
 #if UNITY_EDITOR

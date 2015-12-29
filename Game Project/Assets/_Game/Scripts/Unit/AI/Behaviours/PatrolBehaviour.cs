@@ -8,7 +8,7 @@ public class PatrolBehaviour : AIBehaviour {
 
 	public float reachRange = 3.0f;
 	public float attackCooldown = 1;
-	public float attackRadius = 1;
+	public float attackRadius = 5;
 
     [System.NonSerialized]
     GameObject player;
@@ -42,7 +42,7 @@ public class PatrolBehaviour : AIBehaviour {
 		attackCooldown -= Time.deltaTime;
 
 		float distance = Vector3.Distance(player.transform.position, controller.transform.position);
-		if (distance < attackRadius && attackCooldown <= 0) {
+		if (distance < 5 && attackCooldown <= 0) {
 			bool right = (player.transform.position.x - controller.transform.position.x) > 0;
 			controller.command.move = right?-1:1;
             controller.command.attack = 1;

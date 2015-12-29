@@ -1,8 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
 using UnityEditor;
 
+[CustomEditor(typeof(AIBehaviourGraph))]
+public class AIBehaviourGraphEditor : Editor
+{
+	public override void OnInspectorGUI()
+	{
+		DrawDefaultInspector();
+		AIBehaviourGraph graph = (AIBehaviourGraph)target;
+	}
+}
+
+#endif
 /// <summary>
 /// This class is used and saved as an asset by the AIEditor window. 
 /// AI Controller loads its behaviours from this asset.
@@ -10,60 +23,24 @@ using UnityEditor;
 public class AIBehaviourGraph : ScriptableObject
 {
     public List<AIBehaviour> behaviours = null;
-    public string testString;
 
-
-    [SerializeField] int behaviourCount;
-    
-    // NOTE: Add new types here
-    //public  List<StartBehaviour> serializerStartBehaviour;
-    //public  List<PatrolBehaviour> serializerPatrolBehaviour;
-    //public  List<ShootingBehaviour> serializerShootingBehaviour;
-
+#if UNITY_EDITOR
     public void OnEnable()
     {
-        testString = "OnEnable";
-        if (behaviours == null)
-        {
-            behaviours = new List<AIBehaviour>();
-            testString = "Initialize";
-        }
         hideFlags = HideFlags.None;
     }
 
     public void Clear()
     {
-        testString = "Clear";
-        behaviours.Clear(); // Use to clear invalid data
-        Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(this));
+		behaviours = new List<AIBehaviour>();
+		Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(this));
         foreach (Object subAsset in subAssets)
-            DestroyImmediate(subAsset);
+			DestroyImmediate(subAsset as AIBehaviour, true);
+        AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(this));
     }
 
-    public void OnDestroy()
-    {
-       //Debug.Log("Graph destroyed...");
-    }
 
-    public void LoadBehaviours( ref List<AIBehaviour> _behaviours )
-    {
-        _behaviours = new List<AIBehaviour>();
-        Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(this));
-        foreach (Object subAsset in subAssets)
-        {
-            AIBehaviour behaviour = subAsset as AIBehaviour;
-            if(behaviour != null)
-                _behaviours.Add(ScriptableObject.Instantiate(behaviour));
-        }
-        /*
-        for (int i = 0; i < this.behaviours.Count; i++)
-        {
-            AIBehaviour behaviour = this.behaviours[i];
-            //_behaviours.Add(ObjectCopier.Clone(this.behaviours[i]));
-            _behaviours.Add(ScriptableObject.Instantiate(behaviour));
-        } 
-        */
-    }
+
 
     public void AddBehaviour( AIBehaviour behaviour )
     {
@@ -71,9 +48,31 @@ public class AIBehaviourGraph : ScriptableObject
         behaviours.Add(behaviour);
         behaviour.SetGraphicNode(new Vector2(50, 50));
         behaviour.name = behaviour.Name;
-        //AssetDatabase.CreateAsset(behaviour, AssetDatabase.GetAssetPath(this) + "/" + behaviour.name);
-        //AssetDatabase.ImportAsset(this);
+		//behaviours.Add(behaviour);
         AssetDatabase.AddObjectToAsset(behaviour, this);
-        AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(behaviour));
+        //AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(this));
+
+		//RefreshList();
     }
+
+	public void RestoreIndices()
+	{
+		// TODO: Restore transitions
+		for (int i = 0; i < behaviours.Count; i++) 
+		{
+			behaviours[i].graphic.index = i;
+			behaviours[i].index = i;
+		}
+	}
+
+
+#endif
+
+	public void LoadBehaviours( ref List<AIBehaviour> _behaviours )
+	{
+		_behaviours = new List<AIBehaviour>();
+		foreach (AIBehaviour behaviour in behaviours)
+			_behaviours.Add(ScriptableObject.Instantiate(behaviour));
+	}
+
 }

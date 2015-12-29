@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Knockback : MonoBehaviour {
+public class Knockback : AbstractBehaviour {
 
 	public float resistance; // 0: non resistance, 1: full resistance
-	private  Body body;
 
 	private Vector2 appliedForce;
 	private float durationLeft;
 	private float durationTotal;
 	private GameObject dustObj;
 	private ParticleSystem dust;
-	void Start () {
+
+	override public void Initialize () {
+		base.Initialize();
 		body = GetComponent<Body> ();
 		dustObj = transform.Find ("Dust").gameObject;
 		dust = dustObj.GetComponent<ParticleSystem> ();

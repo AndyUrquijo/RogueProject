@@ -4,6 +4,7 @@
 	{
 		_Color("Color", Color) = (1,1,1)
 		_MainTex("Texture", 2D) = "white" {}
+		_AlphaCutOff("Alpha Cutoff", Range(0.0,1.0)) = 0.0
 		[NoScaleOffset] _Bump("Normal", 2D) = "bump" {}
 		_NormalScale("Normal Scale", Range(0.0,1.0)) = 1.0
 	}
@@ -43,10 +44,10 @@
 
 			struct FragOut
 			{
-				half4 diffuse	: SV_Diffuse;
-				half4 specular	: SV_Specular;
-				half4 normal	: SV_Normal;
-				half4 emission	: SV_Emission;
+				float4 diffuse	: SV_Diffuse;
+				float4 specular	: SV_Specular;
+				float4 normal	: SV_Normal;
+				float4 emission	: SV_Emission;
 			};
 
 
@@ -56,6 +57,7 @@
 			sampler2D _Bump;
 			float4 _MainTex_ST;
 			float4 _Color;
+			float _AlphaCutOff;
 			float _NormalScale;
 			// --- Vertex Shader ----
 
@@ -87,21 +89,24 @@
 				float2 uv = _MainTex_ST.xy * outVert.uv + _MainTex_ST.zw;
 				
 				outFrag.diffuse = tex2D(_MainTex, uv)*_Color;
+				if( outFrag.diffuse.a < _AlphaCutOff )
+					discard;
+				outFrag.diffuse.a = 1;
 				
 				float4 encodedNormal = tex2D(_Bump, uv); // Unity's normals come encoded in the ga channels
 				float3 localNormal = float3(2*encodedNormal.ag - 1, 0);
 				localNormal.z = sqrt(1 - dot(localNormal, localNormal));
 
 				localNormal = localNormal*_NormalScale + float3(0, 0, 1)*(1-_NormalScale);
-				localNormal = normalize(localNormal);
-
+				
 				float3x3 local2WorldTranspose = float3x3(outVert.tangent, outVert.binormal,	outVert.normal);
-				float3 worldNormal = normalize(mul(localNormal, local2WorldTranspose));
+				float3 worldNormal = mul(localNormal, local2WorldTranspose);
+				//worldNormal = normalize(worldNormal);
 				worldNormal = worldNormal*0.5 + 0.5;
 				outFrag.normal = half4(worldNormal,1);
 
-				outFrag.specular = half4(0,0,0,1);
-				outFrag.emission = half4(0,0,0,1);
+				outFrag.specular = half4(0,0,0,0);
+				outFrag.emission = half4(0,0,0,0);
 				return outFrag;
 			}
 

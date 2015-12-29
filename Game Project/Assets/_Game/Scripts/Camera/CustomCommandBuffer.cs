@@ -45,19 +45,26 @@ public class CustomCommandBuffer : MonoBehaviour
     }
     private Dictionary<Camera, CommandSet> m_Cameras = new Dictionary<Camera, CommandSet>();
 
+	Material pointLightMaterial;
+	Material directionalLightMaterial;
+	Material applyMaterial;
+
+	
     public Shader pointLightShader;
-    Material pointLightMaterial;
-
     public Shader directionalLightShader;
-    Material directionalLightMaterial;
+	public Shader applyShader;
 
-    public Shader applyShader;
-    Material applyMaterial;
 
-    public Mesh sphereMesh;
+	RenderTexture lightRT;
+	RenderTexture backgroundRT;
 
+    public Mesh sphereMesh; // used by point lights
+
+    public Color Background;
     public Color Ambient;
     public float AmbientIntensity;
+
+	public Texture2D RampTexture;
 
     private void Cleanup()
     {
@@ -103,11 +110,26 @@ public class CustomCommandBuffer : MonoBehaviour
         if (!directionalLightMaterial)
             directionalLightMaterial = new Material(directionalLightShader);
 
+		if( lightRT == null )
+		{
+			lightRT = new RenderTexture(cam.pixelWidth, cam.pixelHeight, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear);
+			lightRT.Create();
+		}
+
+		if( backgroundRT == null )
+		{
+			backgroundRT = new RenderTexture(cam.pixelWidth, cam.pixelHeight, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+			backgroundRT.Create();
+		}
+
         // A new set of commands is created with the latest light information
         // NOTE: Dumb&easy. Every command set is recreated on each call. 
         // Ideally, existing command lists could be reused and cleared only when needed.
         cam.RemoveAllCommandBuffers();
         CommandSet comSet = m_Cameras[cam] = new CommandSet();
+
+
+		// Create Command Buffers
 
         comSet.lightCommand = new CommandBuffer();
         comSet.lightCommand.name = "Light Commands";
@@ -117,20 +139,24 @@ public class CustomCommandBuffer : MonoBehaviour
         comSet.applyCommand.name = "Apply Commands";
         cam.AddCommandBuffer(CameraEvent.BeforeForwardAlpha, comSet.applyCommand);
 
-        int propLightTexture = Shader.PropertyToID("_LightTexture");
 
         int propLightColor = Shader.PropertyToID("_CustomLightColor");
         int propLightData = Shader.PropertyToID("_CustomLightData");
         int propAttenuation = Shader.PropertyToID("_CustomAttenuation");
         
-        comSet.lightCommand.GetTemporaryRT(propLightTexture, -1, -1, 0, FilterMode.Bilinear,RenderTextureFormat.ARGB32);
-        comSet.lightCommand.SetRenderTarget(propLightTexture);
-        Color ambientColor = Color.Lerp(Color.black, Ambient, AmbientIntensity);
+		// Render Background Texture TODO: try simply rendering to active RT
+
+		Color backgroundColor = Background;
+		backgroundColor.a = 0;
+		comSet.lightCommand.SetRenderTarget(backgroundRT);
+		comSet.lightCommand.ClearRenderTarget(false,true, backgroundColor);
+
+
+        comSet.lightCommand.SetRenderTarget(lightRT);
+		Color ambientColor = Color.Lerp(Color.black, Ambient, AmbientIntensity);
         ambientColor.a = AmbientIntensity;
         
         comSet.lightCommand.ClearRenderTarget(false,true, ambientColor);
-        //comSet.lightCommand.ClearRenderTarget(false,true, Color.clear);
-        //comSet.lightCommand.SetRenderTarget(propLightTexture);
 
         var lights = CustomLightSystem.Instance.lights;
         foreach (CustomLight light in lights)
@@ -170,23 +196,23 @@ public class CustomCommandBuffer : MonoBehaviour
                 lightData.w = directionalLight.Intensity;
                 comSet.lightCommand.SetGlobalVector(propLightData, lightData);
 
-
-                //Matrix4x4 lightMatrix = Matrix4x4.TRS(light.transform.position, Quaternion.identity, Vector3.one * 1000);
-                //comSet.lightCommand.DrawMesh(sphereMesh, lightMatrix, directionalLightMaterial, 0, 0);
-                comSet.lightCommand.Blit(BuiltinRenderTextureType.None, propLightTexture, directionalLightMaterial,0);
-                //comSet.lightCommand.Blit(BuiltinRenderTextureType.None, propLightTexture, directionalLightMaterial,0);
-
-                continue;
+                comSet.lightCommand.Blit(BuiltinRenderTextureType.None, lightRT, directionalLightMaterial,0);
+                
+				continue;
             }
         }
        
         if (!applyMaterial)
+		{
             applyMaterial = new Material(applyShader);
+		}
+		applyMaterial.SetTexture("_RampTexture",RampTexture);
+        comSet.applyCommand.SetGlobalTexture("_LightTexture", lightRT);
+        comSet.applyCommand.SetGlobalTexture("_EmissiveTexture", backgroundRT);
 
-        comSet.applyCommand.SetGlobalTexture("_LightTexture", propLightTexture);
+
         comSet.applyCommand.Blit(BuiltinRenderTextureType.CurrentActive, BuiltinRenderTextureType.CurrentActive, applyMaterial);
-        comSet.lightCommand.ReleaseTemporaryRT(propLightTexture);
-
-    }
+		
+	}
 
 }

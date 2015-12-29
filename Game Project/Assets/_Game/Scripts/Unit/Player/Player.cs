@@ -12,6 +12,7 @@ public class Player : AbstractBehaviour {
 		command.attack = 0;
 
 		CheckAttack("Attack", 1);
+		CheckAttack("Attack2", 2);
 
 
 		command.release = false;

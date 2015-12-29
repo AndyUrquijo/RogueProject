@@ -46,7 +46,7 @@
 			{ 
 				float4 position : POSITION;
 				float4 uv : TEXCOORD0;
-				float3 toCam : NORMAL;	// Vert to Camera
+				float3 toCam : TEXCOORD1;	// Vert to Camera
 			};
 			
 			LightVertexOut VertexFunction(float4 position : POSITION)
@@ -71,7 +71,7 @@
 				outLVert.toCam = outLVert.toCam * (_ProjectionParams.z / outLVert.toCam.z);
 				float2 uv = outLVert.uv.xy / outLVert.uv.w;
 
-				half4 gbuffer2 = tex2D(_CameraGBufferTexture2, uv);
+				float4 gbuffer2 = tex2D(_CameraGBufferTexture2, uv);
 
 				float3 lightPos = float3(_Object2World[0][3], _Object2World[1][3], _Object2World[2][3]);
 				float3 pixelPos = ConstructWorldPos(uv, outLVert.toCam);

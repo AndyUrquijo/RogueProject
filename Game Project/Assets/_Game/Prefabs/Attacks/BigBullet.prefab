@@ -28,7 +28,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 444898}
   - 114: {fileID: 11438550}
-  - 114: {fileID: 11413922}
   m_Layer: 0
   m_Name: BigBullet
   m_TagString: Untagged
@@ -43,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 480048}
@@ -79,10 +78,8 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -101,30 +98,12 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137158}
   m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &11413922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac1f94cbf8625d49999094d244200c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0.5
-  damage: 200
-  push: 60
-  pushDuration: 0.4
-  targets: []
-  owner: {fileID: 0}
+  m_Radius: .5
 --- !u!114 &11438550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,8 +115,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e581e3f1ace06064381a3dab52473ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  MaxSpeed: 0
+  targets: []
+  owner: {fileID: 0}
+  duration: .5
+  damage: 200
+  push: 60
+  pushDuration: .400000006
+  Speed: 20
+  MaxSpeed: 30
   Gravity: 0
 --- !u!114 &11486252
 MonoBehaviour:
@@ -160,6 +145,34 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: speed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: duration
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: push
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pushDuration
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaxSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

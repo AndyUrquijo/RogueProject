@@ -1,4 +1,4 @@
-﻿Shader "Hidden/imageTest"
+﻿Shader "Hidden/ColorPass"
 {
 	Properties
 	{

@@ -77,7 +77,9 @@ public class Jump : AbstractBehaviour
     {
         if (state.state == State.Type.MOVE)
             jumpCounter = 0;
-
+        if (state.Toggled(State.Type.FALL))
+            jumpCounter++;
+		
         bool canJump = state.state == State.Type.MOVE
             || state.state == State.Type.FALL;
 

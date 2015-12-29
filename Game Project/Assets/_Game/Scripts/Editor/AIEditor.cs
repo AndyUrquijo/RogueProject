@@ -90,13 +90,6 @@ public class AIEditor : EditorWindow
     {
         if (graph != null)
                 graph.Clear();
-        //var assets = Selection.GetFiltered(typeof(AIBehaviourGraph), SelectionMode.Assets);
-        //foreach (var asset in assets)
-        //{
-        //    AIBehaviourGraph graph = asset as AIBehaviourGraph;
-        //    if (graph != null)
-        //        graph.Clear();
-        //}
     }
 
     [MenuItem("AI Editor/AI Serialize Test")]
@@ -296,29 +289,8 @@ public class AIEditor : EditorWindow
 
         GUI.color = new Color(0.7f, 0.7f, 0.7f);
 
-        /*
-        int index = comboBox.Show(controlRect);
-        controlRect.y += controlRect.height + 20;
-
-        AIBehaviour behaviour = null;
-        switch (index)
-        {
-            case 0:
-                behaviour = new PatrolBehaviour();
-                break;
-        }
-        if (behaviour != null)
-        {
-            behaviour.index = graph.behaviours.Count;
-            graph.behaviours.Add(behaviour);
-        }
-        */
         if (graph)
         {
-            if (GUILayout.Button("Change"))
-                graph.testString = "Change";
-            GUILayout.Label(graph.testString);
-
             if (GUILayout.Button("Save Asset"))
                 SaveAsset();
         }

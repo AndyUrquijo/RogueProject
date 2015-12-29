@@ -51,7 +51,7 @@
 				lightDir = normalize(lightDir);
 				float intensity = _CustomLightData.w;
 
-				half4 gbuffer2 = tex2D(_CameraGBufferTexture2, outVert.uv);
+				float4 gbuffer2 = tex2D(_CameraGBufferTexture2, outVert.uv);
 
 
 

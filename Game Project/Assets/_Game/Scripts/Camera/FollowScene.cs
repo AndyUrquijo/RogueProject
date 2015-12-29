@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif 
 
 [ExecuteInEditMode]
 public class FollowScene : MonoBehaviour {
 
     void Update() { }
-    void OnRenderObject()
+
+#if UNITY_EDITOR
+	void OnRenderObject()
     {
         SceneView scene = SceneView.lastActiveSceneView;
         if (scene)
@@ -15,4 +20,5 @@ public class FollowScene : MonoBehaviour {
             transform.rotation = scene.camera.transform.rotation;
         }
     }
+#endif
 }

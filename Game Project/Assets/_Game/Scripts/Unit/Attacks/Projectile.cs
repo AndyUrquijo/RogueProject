@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : Attack {
 
 
 	public float Speed;
     public float MaxSpeed;
     public float Gravity;
 
-	private Vector3 velocity;
-
-    Rigidbody2D rigidBody;
+    Vector3 velocity;
 
 	void Start () {
-        rigidBody = GetComponent<Rigidbody2D>();
-		transform.parent = null;
 	}
 
-    public void Shoot(Vector3 velocity)
+
+    override public void StartAttack()
     {
-        rigidBody.velocity = transform.parent.transform.right.normalized * Speed;
+		base.StartAttack();
+		velocity = transform.transform.right.normalized * Speed;
+		transform.parent = null;
     }
 
     void FixedUpdate () {
+		velocity += Gravity*Vector3.down * Time.fixedDeltaTime;
 		transform.position += velocity * Time.fixedDeltaTime;
 
 	}

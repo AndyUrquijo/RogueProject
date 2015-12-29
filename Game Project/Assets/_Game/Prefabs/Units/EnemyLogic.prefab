@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 475812}
+  - 114: {fileID: 11487334}
   - 114: {fileID: 11432786}
   - 114: {fileID: 11479576}
   m_Layer: 9
@@ -59,7 +60,28 @@ MonoBehaviour:
   targets:
   - Player
   attacks:
-  - {fileID: 122774, guid: b7329f334d4b01447b11e566fdcb5627, type: 2}
+  - {fileID: 137752, guid: c621936c8e571214fadba53b30dee8a8, type: 2}
+--- !u!114 &11487334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a86a2a8520b702438c8ec1ae39eefd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  command: {fileID: 0}
+  body: {fileID: 0}
+  state: {fileID: 0}
+  behaviours: []
+  graph: {fileID: 11400000, guid: 955df04a596ce8b4d8cca4d8ce1bad03, type: 2}
+  currentBehaviour: {fileID: 0}
+  waypoints: []
+  sensors: []
+  started: 0
+  current: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -78,8 +100,12 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: graph
       value: 
-      objectReference: {fileID: 11400000, guid: 15757a545a5f9104ab3ebf78706e5f66,
+      objectReference: {fileID: 11400000, guid: 955df04a596ce8b4d8cca4d8ce1bad03,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 137752, guid: c621936c8e571214fadba53b30dee8a8, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 135300}

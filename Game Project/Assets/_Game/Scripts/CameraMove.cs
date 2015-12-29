@@ -34,12 +34,11 @@ public class CameraMove : MonoBehaviour {
 	Rigidbody2D player;
 
 
-	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D>();
-	}
-
 	public void FixedUpdate () {
         
+		if( player == null )
+			player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D>();
+
 		Vector3 destination = player.transform.position + offset;
         Vector3 preemptionDistance = new Vector3(player.velocity.x, player.velocity.y, 0) * preemption;
         destination += preemptionDistance;
