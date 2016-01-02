@@ -40,6 +40,7 @@
 				float3 normal	: TEXCOORD1;
 				float3 tangent	: TEXCOORD2;
 				float3 binormal : TEXCOORD3;
+				float4 worldPosition : TEXCOORD4;
 			};
 
 			struct FragOut
@@ -66,6 +67,7 @@
 				VertexOut outVert;
 				
 				outVert.position = mul(UNITY_MATRIX_MVP, inVert.position);
+				outVert.worldPosition = mul(_Object2World, inVert.position);
 
 				outVert.normal = mul(float4(inVert.normal, 0), _World2Object).xyz;
 				outVert.tangent = mul(_Object2World, float4(inVert.tangent.xyz, 0)).xyz; 
@@ -103,9 +105,10 @@
 				float3 worldNormal = mul(localNormal, local2WorldTranspose);
 				//worldNormal = normalize(worldNormal);
 				worldNormal = worldNormal*0.5 + 0.5;
-				outFrag.normal = half4(worldNormal,1);
+				outFrag.normal = float4(worldNormal,1);
 
-				outFrag.specular = half4(0,0,0,0);
+				outFrag.specular = float4(outVert.worldPosition);
+				//outFrag.specular = half4(0,0,0,0);
 				outFrag.emission = half4(0,0,0,0);
 				return outFrag;
 			}

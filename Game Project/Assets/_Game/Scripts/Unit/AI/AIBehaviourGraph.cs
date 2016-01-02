@@ -11,7 +11,7 @@ public class AIBehaviourGraphEditor : Editor
 	public override void OnInspectorGUI()
 	{
 		DrawDefaultInspector();
-		AIBehaviourGraph graph = (AIBehaviourGraph)target;
+		//AIBehaviourGraph graph = (AIBehaviourGraph)target;
 	}
 }
 

@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: c3128ccc1e63b9040bc57044db4075ff, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 20, y: 20}
           m_Offset: {x: 0, y: 0}
       data:
@@ -82,7 +82,7 @@ Material:
         first:
           name: _Bump
         second:
-          m_Texture: {fileID: 2800000, guid: fed4aaa9b456fd44b810b3187b382bb0, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -144,7 +144,7 @@ Material:
       data:
         first:
           name: _NormalScale
-        second: .43599999
+        second: 0
       data:
         first:
           name: _AlphaCutOff

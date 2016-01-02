@@ -1,4 +1,4 @@
-﻿Shader "CustomDeferred/TestPostProcess"
+﻿Shader "CustomDeferred/ApplyLight"
 {
 	Properties
 	{
@@ -9,7 +9,7 @@
 	SubShader
 	{
 		Cull Off ZWrite Off ZTest Always
-		Tags{ "Queue" = "Transparent+1" }
+		Tags{ "Queue" = "Transparent" }
 		//Tags{ "Queue" = "Transparent+1" }
 		Pass
 		{
@@ -34,6 +34,7 @@
 			};
 
 			sampler2D _MainTex;
+			sampler2D _DiffuseTexture;
 			sampler2D _LightTexture;
 			sampler2D _EmissiveTexture;
 			sampler2D _RampTexture;
@@ -53,20 +54,34 @@
 				return outVert;
 			}
 
+
+			float Ramp(float value)
+			{
+				if( value < 0.3 )
+					return 0.3;
+				if( value < 0.7 )
+					return 0.7;
+				
+				return 1;
+			}
+
 			// --- Fragment Shader ----
 
 			float4 FragmentFunction(VertexOut outVert) : COLOR
 			{
 				float4 lightColor = tex2D(_LightTexture, outVert.uv);
 				float4 diffuseColor = tex2D(_CameraGBufferTexture0, outVert.uv);
+				float4 worldPosColor = tex2D(_CameraGBufferTexture1, outVert.uv);
 				float4 emissiveColor = tex2D(_EmissiveTexture, outVert.uv);
 				float lightRamped = tex2D(_RampTexture, float2(lightColor.aa)).r;
+				//float lightRamped = Ramp(lightColor.a);
 				float4 normalColor = tex2D(_CameraGBufferTexture2, outVert.uv);
-				//return normalColor;
-				//lightColor.rgb *= lightColor.a;
-				//return float4(emissiveColor.rgb, 1);
-				//return float4(diffuseColor.aaa, 1);
-				//return float4(diffuseColor.rgb, 1);
+				
+				worldPosColor.rgb *= 0.1;
+				//return lightColor*lightColor.a;
+				//return lightColor;
+				//return lightColor.aaaa;
+				
 				float4 finalColor;
 				finalColor.a = 1;
 				finalColor.rgb = diffuseColor.rgb;

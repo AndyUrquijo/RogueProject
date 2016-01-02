@@ -91,7 +91,23 @@ public class CustomCommandBuffer : MonoBehaviour
         Cleanup();
     }
 
-    public void OnWillRenderObject()
+	void CreateRenderTexture( ref RenderTexture renderTexture, int width, int height, int depth, RenderTextureFormat format, RenderTextureReadWrite readwrite)
+	{
+		if( renderTexture == null )
+		{
+			renderTexture = new RenderTexture(width, height, depth, format, readwrite);
+			renderTexture.Create();
+		}
+	}
+
+	void CreateCommand( ref CommandBuffer comBuf, Camera camera, string name, CameraEvent timeSlot)
+	{
+		comBuf = new CommandBuffer();
+		comBuf.name = name;
+		camera.AddCommandBuffer(timeSlot, comBuf);
+	}
+
+	public void OnWillRenderObject()
     {
         var act = gameObject.activeInHierarchy && enabled;
         if (!act)
@@ -105,22 +121,14 @@ public class CustomCommandBuffer : MonoBehaviour
             return;
 
 
+
         if (!pointLightMaterial)
             pointLightMaterial = new Material(pointLightShader);
         if (!directionalLightMaterial)
             directionalLightMaterial = new Material(directionalLightShader);
 
-		if( lightRT == null )
-		{
-			lightRT = new RenderTexture(cam.pixelWidth, cam.pixelHeight, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear);
-			lightRT.Create();
-		}
-
-		if( backgroundRT == null )
-		{
-			backgroundRT = new RenderTexture(cam.pixelWidth, cam.pixelHeight, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
-			backgroundRT.Create();
-		}
+		CreateRenderTexture(ref lightRT, cam.pixelWidth, cam.pixelHeight, 0, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);
+		CreateRenderTexture(ref backgroundRT, cam.pixelWidth, cam.pixelHeight, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
 
         // A new set of commands is created with the latest light information
         // NOTE: Dumb&easy. Every command set is recreated on each call. 
@@ -128,32 +136,26 @@ public class CustomCommandBuffer : MonoBehaviour
         cam.RemoveAllCommandBuffers();
         CommandSet comSet = m_Cameras[cam] = new CommandSet();
 
-
-		// Create Command Buffers
-
-        comSet.lightCommand = new CommandBuffer();
-        comSet.lightCommand.name = "Light Commands";
-        cam.AddCommandBuffer(CameraEvent.AfterLighting, comSet.lightCommand);
-
-        comSet.applyCommand = new CommandBuffer();
-        comSet.applyCommand.name = "Apply Commands";
-        cam.AddCommandBuffer(CameraEvent.BeforeForwardAlpha, comSet.applyCommand);
+		CreateCommand(ref comSet.lightCommand,cam, "Light Command", CameraEvent.AfterLighting);
+		CreateCommand(ref comSet.applyCommand,cam, "Apply Commands", CameraEvent.BeforeForwardAlpha);
 
 
+		// Light Commands
+		
         int propLightColor = Shader.PropertyToID("_CustomLightColor");
         int propLightData = Shader.PropertyToID("_CustomLightData");
         int propAttenuation = Shader.PropertyToID("_CustomAttenuation");
         
-		// Render Background Texture TODO: try simply rendering to active RT
 
+		// Render Background Texture
 		Color backgroundColor = Background;
 		backgroundColor.a = 0;
-		comSet.lightCommand.SetRenderTarget(backgroundRT);
+		comSet.lightCommand.SetRenderTarget(backgroundRT); //TODO: try simply rendering to active RT
 		comSet.lightCommand.ClearRenderTarget(false,true, backgroundColor);
 
 
         comSet.lightCommand.SetRenderTarget(lightRT);
-		Color ambientColor = Color.Lerp(Color.black, Ambient, AmbientIntensity);
+		Color ambientColor = Ambient;
         ambientColor.a = AmbientIntensity;
         
         comSet.lightCommand.ClearRenderTarget(false,true, ambientColor);
@@ -163,7 +165,7 @@ public class CustomCommandBuffer : MonoBehaviour
         {
             CustomPointLight pointLight = light as CustomPointLight;
             if (pointLight)
-            {
+            {	
                 comSet.lightCommand.SetGlobalColor(propLightColor, pointLight.Color);
 
                 Vector4 lightData = Vector4.zero;
@@ -202,17 +204,20 @@ public class CustomCommandBuffer : MonoBehaviour
             }
         }
        
-        if (!applyMaterial)
+		// Apply Commands
+		
+		if (!applyMaterial)
 		{
             applyMaterial = new Material(applyShader);
 		}
 		applyMaterial.SetTexture("_RampTexture",RampTexture);
+
         comSet.applyCommand.SetGlobalTexture("_LightTexture", lightRT);
         comSet.applyCommand.SetGlobalTexture("_EmissiveTexture", backgroundRT);
 
 
         comSet.applyCommand.Blit(BuiltinRenderTextureType.CurrentActive, BuiltinRenderTextureType.CurrentActive, applyMaterial);
-		
+
 	}
 
 }

@@ -92,35 +92,6 @@ public class AIEditor : EditorWindow
                 graph.Clear();
     }
 
-    [MenuItem("AI Editor/AI Serialize Test")]
-    static void TestSerialize()
-    {
-        TestSerializer test = ScriptableObject.CreateInstance<TestSerializer>();
-        test.number1 = 42;
-        test.nested.number1 = 99;
-        TestGeneric(test);
-    }
-
-
-    static void TestGeneric<T>(T test) where T :ScriptableObject
-    {
-        
-        T clone = null;
-        try
-        {
-            clone = ScriptableObject.Instantiate<T>(test);
-            clone = ObjectCopier.Clone<T>(test);
-        }
-        catch (Exception ex)
-        {
-            Debug.Log(ex.Message);
-        }
-        Debug.Log("base" + test.ToString());
-        Debug.Log("clone" + clone.ToString());
-
-        ScriptableObject.DestroyImmediate(test);
-        ScriptableObject.DestroyImmediate(clone);
-    }
 
     // Whenever a Graph asset is opened, the window initializes with it
     [UnityEditor.Callbacks.OnOpenAsset(1)]

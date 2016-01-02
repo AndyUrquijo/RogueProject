@@ -4,9 +4,9 @@ using System.Collections;
 public class Body : AbstractBehaviour {
 
 	[HideInInspector]
-	public Rigidbody2D rigidbody;
+	public new Rigidbody2D rigidbody;
 	[HideInInspector]
-	public Collider2D collider;
+	public new Collider2D collider;
 
 	override public void Initialize() {
         base.Initialize();

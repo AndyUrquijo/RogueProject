@@ -26,7 +26,8 @@
 			Fog{ Mode Off }
 			ZWrite Off
 			ZTest Always
-			Blend One One
+			Blend One OneMinusSrcAlpha, One One
+			//Blend One One
 			Cull Front
 
 			CGPROGRAM
@@ -83,9 +84,8 @@
 				float3 toLightN = normalize(toLight);
 				float lightFactor = max(0, dot(toLightN, normal) );
 			
-				float dist = length(toLight)/ range;
+				float dist = min(1,length(toLight)/ range);
 				float att = (1 - pow(dist, pwr)) / (attC + attL*dist + attQ*dist*dist);
-
 				lightFactor *= att;
 				lightFactor *= intensity;
 

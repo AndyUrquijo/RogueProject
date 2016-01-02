@@ -7,7 +7,7 @@
 			Fog{ Mode Off }
 			ZWrite Off
 			ZTest Always
-			Blend One One
+			Blend SrcAlpha OneMinusSrcAlpha, One One
 			//Blend One One
 
 			CGPROGRAM
@@ -62,7 +62,7 @@
 				lightFactor *= intensity;
 				float4 lightColor;
 				lightColor.rgb = _CustomLightColor.rgb;
-				lightColor.rgb *= lightFactor;
+				//lightColor.rgb *= lightFactor;
 				lightColor.a = lightFactor;
 				return lightColor;
 			}
