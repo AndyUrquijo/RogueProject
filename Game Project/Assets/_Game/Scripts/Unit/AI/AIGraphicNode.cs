@@ -9,7 +9,7 @@ using System.Collections;
 [System.Serializable]
 public class AIGraphicNode : AIGraphicElement
 {
-
+	[SerializeField]
     private SerializableRect area = new SerializableRect();
     public Rect Area
     {

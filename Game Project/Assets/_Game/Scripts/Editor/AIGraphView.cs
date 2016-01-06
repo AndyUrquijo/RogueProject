@@ -115,6 +115,13 @@ public class AIGraphView
                 }
             }
 
+			if( behaviour.graphic == null )
+			{
+				behaviour.graphic = new AIGraphicNode();
+				behaviour.graphic.Area = new Rect(0,0,100,100);
+			}
+
+
             AIGraphicNode graphic = behaviour.graphic;
 
             if (selectedNode != null && graphic.Area.Contains(mousePos)
