@@ -13,6 +13,9 @@ public class FollowScene : MonoBehaviour {
 #if UNITY_EDITOR
 	void OnRenderObject()
     {
+        if (Application.isPlaying)
+            return;
+
         SceneView scene = SceneView.lastActiveSceneView;
         if (scene)
         {

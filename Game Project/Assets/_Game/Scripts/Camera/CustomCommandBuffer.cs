@@ -93,10 +93,13 @@ public class CustomCommandBuffer : MonoBehaviour
 
 	void CreateRenderTexture( ref RenderTexture renderTexture, int width, int height, int depth, RenderTextureFormat format, RenderTextureReadWrite readwrite)
 	{
-		if( renderTexture == null )
+		if( renderTexture == null || renderTexture.width != width || renderTexture.height != height )
 		{
 			renderTexture = new RenderTexture(width, height, depth, format, readwrite);
-			renderTexture.Create();
+            //renderTexture.filterMode = FilterMode.Point;
+            //renderTexture.antiAliasing = 0;
+            //renderTexture.anisoLevel = 0;
+            renderTexture.Create();
 		}
 	}
 
@@ -129,6 +132,8 @@ public class CustomCommandBuffer : MonoBehaviour
 
 		CreateRenderTexture(ref lightRT, cam.pixelWidth, cam.pixelHeight, 0, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);
 		CreateRenderTexture(ref backgroundRT, cam.pixelWidth, cam.pixelHeight, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+
+
 
         // A new set of commands is created with the latest light information
         // NOTE: Dumb&easy. Every command set is recreated on each call. 

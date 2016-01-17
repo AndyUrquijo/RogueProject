@@ -10,5 +10,4 @@ public abstract class AISensor : MonoBehaviour {
 	
 	}
 
-    abstract public GameObject[] Detect();
 }

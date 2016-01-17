@@ -34,7 +34,7 @@ public class ProximitySensor : AISensor {
         }
     }
 
-    override public GameObject[] Detect()
+    public GameObject[] Detect()
     {
         return detected.ToArray(); // NOTE: Potential bad performance
     }

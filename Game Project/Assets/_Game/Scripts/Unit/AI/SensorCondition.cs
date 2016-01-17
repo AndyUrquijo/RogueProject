@@ -19,9 +19,13 @@ public class SensorCondition : AICondition {
         {
             foreach (AISensor sensor in controller.sensors)
             {
-                GameObject[] sensed = sensor.Detect();
-                if (sensed.Length > 0)
-                    return true;
+                ProximitySensor proximity = sensor as ProximitySensor;
+                if(proximity != null)
+                {
+                    GameObject[] sensed = proximity.Detect();
+                    if (sensed.Length > 0)
+                        return true;
+                }
             }
         }
 

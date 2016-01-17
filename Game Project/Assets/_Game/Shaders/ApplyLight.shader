@@ -57,13 +57,26 @@
 
 			float Ramp(float value)
 			{
-				if( value < 0.3 )
-					return 0.3;
-				if( value < 0.7 )
-					return 0.7;
-				
-				return 1;
+				float mul = 3;
+				return int(value*3) / 3.0;
+
 			}
+
+			float RampB(float value)
+			{
+				float borders[2] = { 0.35,0.78 };
+				float values[3] = { 0.17,0.51, 1.0 };
+
+				int i = 0;
+				for (; i < 2; i++)
+				{
+					if (value < borders[i])
+						return values[i];
+				}
+				return values[i];
+
+			}
+
 
 			// --- Fragment Shader ----
 
@@ -73,21 +86,30 @@
 				float4 diffuseColor = tex2D(_CameraGBufferTexture0, outVert.uv);
 				float4 worldPosColor = tex2D(_CameraGBufferTexture1, outVert.uv);
 				float4 emissiveColor = tex2D(_EmissiveTexture, outVert.uv);
-				float lightRamped = tex2D(_RampTexture, float2(lightColor.aa)).r;
-				//float lightRamped = Ramp(lightColor.a);
-				float4 normalColor = tex2D(_CameraGBufferTexture2, outVert.uv);
 				
+
+				// TODO: Fix bug in _RampTexture Lookups (might be related to it being a dependent texture read)
+				//float lightRamped = tex2D(_RampTexture, float2(lightColor.a, 0)).r;
+				//float lightRamped = tex2D(_RampTexture, float2(outVert.uv.r,0)).r;
+				float lightRamped = RampB(lightColor.a);
+				float4 normalColor = tex2D(_CameraGBufferTexture2, outVert.uv);
+				//float4 rampTexture = tex2D(_RampTexture, float2(lightColor.a,0));
+
 				worldPosColor.rgb *= 0.1;
+				//return float4(1, 1, 1, 1)*lightColor.a;
+				//return float4(1, 1, 1, 1)*lightRamped;
 				//return lightColor*lightColor.a;
 				//return lightColor;
+				//return normalColor;
 				//return lightColor.aaaa;
+				//return diffuseColor;
+				//return rampTexture;
 				
 				float4 finalColor;
 				finalColor.a = 1;
 				finalColor.rgb = diffuseColor.rgb;
 				finalColor.rgb *= lightColor.rgb;
 				finalColor.rgb *= lightRamped;
-				
 				
 				float alpha = diffuseColor.a;
 				finalColor = finalColor*alpha + emissiveColor*(1-alpha);
