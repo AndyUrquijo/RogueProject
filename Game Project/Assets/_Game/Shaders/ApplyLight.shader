@@ -55,27 +55,35 @@
 			}
 
 
-			float Ramp(float value)
+			float SmoothStep(float x0, float x1, float y0, float y1, float x)
 			{
-				float mul = 3;
-				return int(value*3) / 3.0;
-
+				x = saturate((x - x0) / (x1 - x0));
+				x = x*x*(3 - 2 * x);
+				x = x*(y1 - y0) + y0;
+				return x;
 			}
 
-			float RampB(float value)
+			float Ramp(float value)
 			{
-				float borders[2] = { 0.35,0.78 };
-				float values[3] = { 0.17,0.51, 1.0 };
+				float borders[2] = { 0.35, 0.78 };
+				float values[3] = { 0.17, 0.51, 1.0 };
+				float del = 0.005f;
 
 				int i = 0;
 				for (; i < 2; i++)
 				{
-					if (value < borders[i])
-						return values[i];
+					float x0 = borders[i] - del;
+					float x1 = borders[i] + del;
+					float y0 = values[i];
+					float y1 = values[i+1];
+					if (value < x1)
+						return SmoothStep(x0, x1, y0, y1, value);
 				}
+
 				return values[i];
 
 			}
+
 
 
 			// --- Fragment Shader ----
@@ -88,22 +96,10 @@
 				float4 emissiveColor = tex2D(_EmissiveTexture, outVert.uv);
 				
 
-				// TODO: Fix bug in _RampTexture Lookups (might be related to it being a dependent texture read)
-				//float lightRamped = tex2D(_RampTexture, float2(lightColor.a, 0)).r;
-				//float lightRamped = tex2D(_RampTexture, float2(outVert.uv.r,0)).r;
-				float lightRamped = RampB(lightColor.a);
+				float lightRamped = Ramp(lightColor.a);
 				float4 normalColor = tex2D(_CameraGBufferTexture2, outVert.uv);
-				//float4 rampTexture = tex2D(_RampTexture, float2(lightColor.a,0));
 
 				worldPosColor.rgb *= 0.1;
-				//return float4(1, 1, 1, 1)*lightColor.a;
-				//return float4(1, 1, 1, 1)*lightRamped;
-				//return lightColor*lightColor.a;
-				//return lightColor;
-				//return normalColor;
-				//return lightColor.aaaa;
-				//return diffuseColor;
-				//return rampTexture;
 				
 				float4 finalColor;
 				finalColor.a = 1;
