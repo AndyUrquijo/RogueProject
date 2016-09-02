@@ -65,8 +65,9 @@
 
 			float Ramp(float value)
 			{
+				//todo PUT THIS IN INSPECTOR
 				float borders[2] = { 0.35, 0.78 };
-				float values[3] = { 0.17, 0.51, 1.0 };
+				float values[3] = { 0.17, 0.51, 0.8 };
 				float del = 0.005f;
 
 				int i = 0;
